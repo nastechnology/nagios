@@ -35,13 +35,6 @@ class nagios::target::ubuntu {
     service_description => "${::hostname}_check_ping",
   }
 
-  @@nagios_hostextinfo { $fqdn:
-    ensure          => present,
-    icon_image_alt  => $operatingsystem,
-    icon_image      => "base/${my_os}.png",
-    statusmap_image => "base/${my_os}.gd2",
-  }
-
   @@nagios_service { "check_load_${hostname}":
     use                 => "generic-service",
     host_name           => "$fqdn",
