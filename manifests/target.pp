@@ -1,4 +1,6 @@
 class nagios::target {
+  
+  $my_os = downcase($operatingsystem)
 
   @@nagios_host { $fqdn:
     ensure  => present,
@@ -18,8 +20,8 @@ class nagios::target {
   @@nagios_hostextinfo { $fqdn:
     ensure          => present,
     icon_image_alt  => $operatingsystem,
-    icon_image      => "base/${::operatingsystem}.png",
-    statusmap_image => "base/${::operatingsystem}.gd2",
+    icon_image      => "base/${my_os}.png",
+    statusmap_image => "base/${my_os}.gd2",
   }
 
 }
