@@ -9,7 +9,7 @@ class nagios::target::ubuntu {
     changes   => present ? {
       present => "set allowed_hosts 10.20.2.18",
       default => "rm allowed_host 127.0.0.1",
-    }
+    },
     require   => Package['nagios-nrpe-server'],
   }
 
