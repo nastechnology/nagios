@@ -4,6 +4,12 @@ class nagios::target::ubuntu {
     ensure => installed,
   }
 
+  service { 'nagios-nrpe-server':
+    ensure  => running,
+    enable  => true,
+    require => Package['nagios-nrpe-server'],
+  }
+
   augeas { 'nrpe config':
     context   => '/files/etc/nagios/nrpe.cfg',
     changes   => present ? {
@@ -11,6 +17,7 @@ class nagios::target::ubuntu {
       default => "rm allowed_host 127.0.0.1",
     },
     require   => Package['nagios-nrpe-server'],
+    notify    => Service['nagios-nrpe-server'],
   }
 
   @@nagios_host { $fqdn:
