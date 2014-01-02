@@ -15,5 +15,6 @@ class nagios::monitor {
   # Collect resources and populate /etc/nagios/nagios_*.cfg
   Nagios_host    <<||>> { notify => Service['nagios'] }
   Nagios_service <<||>> { notify => Service['nagios'] }
-  Nagios_hostextinfo <<||>> { notify => Service['nagios']}
+  Nagios_hostextinfo <<||>> { notify => Service['nagios'] }
+  Nagios_hostgroup <<||>> { notify => Services['nagios'] }
 }
