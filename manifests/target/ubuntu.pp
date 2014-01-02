@@ -20,6 +20,11 @@ class nagios::target::ubuntu {
     notify    => Service['nagios-nrpe-server'],
   }
 
+  @@nagios_hostgroup { 'ubuntu-servers':
+    ensure   => present,
+    notes    => 'Ubuntu 12.04 LTS servers',
+  }
+
   @@nagios_host { $fqdn:
     ensure  => present,
     alias   => $::hostname,
