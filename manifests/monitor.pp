@@ -16,5 +16,5 @@ class nagios::monitor {
   Nagios_host    <<||>> { notify => Service['nagios'] }
   Nagios_service <<||>> { notify => Service['nagios'] }
   Nagios_hostextinfo <<||>> { notify => Service['nagios'] }
-  Nagios_hostgroup <<||>> { notify => Services['nagios'] }
+  Nagios_hostgroup <<||>> { notify => Service['nagios'] }
 }
