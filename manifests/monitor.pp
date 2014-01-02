@@ -9,7 +9,7 @@ class nagios::monitor {
     hasstatus => true,
     enable    => true,
     alias     => 'nagios',
-    subscribe => [ Package['nagios3'], Package['nagios-plugins'], Package['nagsio-nrpe-plugin' ],
+    subscribe => [ Package['nagios3'], Package['nagios-plugins'], Package['nagsio-nrpe-plugin'] ],
   }
 
   # Collect resources and populate /etc/nagios/nagios_*.cfg
