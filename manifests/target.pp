@@ -24,4 +24,11 @@ class nagios::target {
     statusmap_image => "base/${my_os}.gd2",
   }
 
+  @@nagios_service { "check_load_${hostname}":
+     use                 => "generic-service",
+     host_name           => "$fqdn",
+     check_command       => 'check_nrpe_1arg!check_load',
+     service_description => "check_load${hostname}",
+  }
+
 }
