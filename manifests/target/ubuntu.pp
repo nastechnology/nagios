@@ -28,9 +28,9 @@ class nagios::target::ubuntu {
   }
 
   @@nagios_hostextinfo { $fqdn:
-     ensure => present,
-     icon_image_alt => 'ubuntu',
-     icon_image => "base/ubuntu.png",
+     ensure          => present,
+     icon_image_alt  => 'ubuntu',
+     icon_image      => "base/ubuntu.png",
      statusmap_image => "base/ubuntu.gd2",
   }
 
