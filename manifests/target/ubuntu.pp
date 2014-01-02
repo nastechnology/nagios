@@ -45,7 +45,7 @@ class nagios::target::ubuntu {
   @@nagios_service { "check_total_procs_${hostname}":
     use                 => "generic-service",
     host_name           => $fqdn,
-    check_command       => 'check_nrpe_1arg!check_procs',
+    check_command       => 'check_nrpe_1arg!check_total_procs',
     service_description => "check_total_procs_${hostname}",
   }
 }
