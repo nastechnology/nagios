@@ -13,6 +13,6 @@ class nagios::monitor {
   }
 
   # Collect resources and populate /etc/nagios/nagios_*.cfg
-  Nagios_host     <<||>> { notify => Service['nagios'] }
-  Nagios_services <<||>> { notify => Service['nagios'] }
+  Nagios_host    <<||>> { notify => Service['nagios'] }
+  Nagios_service <<||>> { notify => Service['nagios'] }
 }
