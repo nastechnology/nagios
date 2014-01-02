@@ -22,7 +22,8 @@ class nagios::target::ubuntu {
 
   @@nagios_hostgroup { 'ubuntu-servers':
     ensure   => present,
-    notes    => 'Ubuntu 12.04 LTS servers',
+    alias    => 'Ubuntu 12.04 LTS servers',
+    members  => $fqdn,
   }
 
   @@nagios_host { $fqdn:
