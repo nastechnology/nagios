@@ -1,7 +1,7 @@
 class nagios::monitor {
 
   # Manage the packages
-  package { ['nagios3', 'nagios-plugins' ]: ensure => installed }
+  package { ['nagios3', 'nagios-plugins', 'nagios3-common','nagios3-cgi', 'nagios3-core' ]: ensure => installed }
 
   # Manage the Nagios monitoring service
   service { 'nagios3':
