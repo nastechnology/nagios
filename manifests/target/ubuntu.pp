@@ -27,10 +27,6 @@ class nagios::target::ubuntu {
     use     => 'generic-host',
   }
 
-  @@nagios_hostgroup { 'ubuntu-servers':
-    ensure => absent,
-  }
-
   @@nagios_hostextinfo { $fqdn:
      ensure          => present,
      icon_image_alt  => 'ubuntu',
