@@ -7,7 +7,7 @@ class nagios::target::ubuntu {
   augeas { 'nrpe config':
     context   => '/files/etc/nagios/nrpe.cfg',
     changes   => present ? {
-      present => "set allowed_hosts 10.20.2.18",
+      present => "set allowed_hosts[.= '10.20.2.18'] 10.20.2.18",
       default => "rm allowed_host 127.0.0.1",
     },
     require   => Package['nagios-nrpe-server'],
