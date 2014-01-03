@@ -38,4 +38,21 @@ class nagios::monitor {
     notify                => Service['nagios'],
   }
 
+  @@nagios_timeperiod { 'weekdays':
+    timeperiod_name  => 'weekdays',
+    monday           => '00:00-24:00',
+    tuesday          => '00:00-24:00',
+    wednesday        => '00:00-24:00',
+    thursday         => '00:00-24:00',
+    firday           => '00:00-24:00',
+    target           => '/etc/nagios/timeperiods.cfg',
+  }
+
+  @@nagios_timeperiod { 'weekends':
+    timeperiod_name  => 'weekends',
+    saturday         => '00:00-24:00',
+    sunday           => '00:00-24:00',
+    target           => '/etc/nagios/timeperiods.cfg',
+  }
+
 }
