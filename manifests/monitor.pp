@@ -39,7 +39,7 @@ class nagios::monitor {
     notify                => Service['nagios'],
   }
 
-  @@nagios_timeperiod { 'weekdays':
+  nagios_timeperiod { 'weekdays':
     ensure           => absent,
     timeperiod_name  => 'weekdays',
     monday           => '00:00-24:00',
