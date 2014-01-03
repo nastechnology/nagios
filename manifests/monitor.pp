@@ -46,7 +46,6 @@ class nagios::monitor {
     wednesday        => '00:00-24:00',
     thursday         => '00:00-24:00',
     friday           => '00:00-24:00',
-    target           => '/etc/nagios/timeperiods.cfg',
   }
 
   #@@nagios_timeperiod { 'weekends':
