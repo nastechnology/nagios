@@ -20,7 +20,7 @@ class nagios::monitor {
   @@nagios_host { 'windows-server':
     ensure                => present,
     use                   => 'generic-host',
-    target                => '/etc/nagios3/objects/template.cfg',
+    target                => '/etc/nagios/template.cfg',
     check_period          => '24x7',
     check_interval        => '5',
     retry_interval        => '1',
@@ -32,10 +32,6 @@ class nagios::monitor {
     contact_groups        => 'admins',
     register              => '0',
     notify                => Service['nagios'],
-  }
-
-  exec { 'SetNagiosObjectsPerms':
-    command => '/usr/bin/sudo /bin/chmod -Rf 644 /etc/nagios3/objects/*',
   }
 
   exec { 'SetNagiosPerms':
