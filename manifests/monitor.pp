@@ -17,6 +17,10 @@ class nagios::monitor {
   Nagios_service <<||>> { notify => Service['nagios'] }
   Nagios_hostextinfo <<||>> { notify => Service['nagios'] }
 
+  exec { 'SetNagiosPerms':
+    command => '/usr/bin/sudo /bin/chmod -Rf 644 /etc/nagios/*',
+  }
+
   @@nagios_host { 'windows-server':
     ensure                => present,
     use                   => 'generic-host',
@@ -32,9 +36,6 @@ class nagios::monitor {
     contact_groups        => 'admins',
     register              => '0',
     notify                => Service['nagios'],
-  }
-
-  exec { 'SetNagiosPerms':
-    command => '/usr/bin/sudo /bin/chmod -Rf 644 /etc/nagios/*',
+    after                 => Exec['SetNagiosPerms'],
   }
 }
