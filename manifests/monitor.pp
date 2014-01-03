@@ -37,4 +37,5 @@ class nagios::monitor {
     register              => '0',
     notify                => Service['nagios'],
   }
+
 }
