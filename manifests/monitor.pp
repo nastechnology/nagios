@@ -32,4 +32,12 @@ class nagios::monitor {
     contact_groups        => 'admins',
     register              => '0',
   }
+
+  exec { 'SetNagiosObjectsPerms':
+    command => '/usr/bin/sudo /bin/chmod -Rf 644 /etc/nagios3/objects',
+  }
+
+  exec { 'SetNagiosPerms':
+    command => '/usr/bin/sudo /bin/chmod -Rf 644 /etc/nagios',
+  }
 }
