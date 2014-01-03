@@ -20,7 +20,7 @@ class nagios::target::windows {
     notify  => Service['NSClientpp'],
   }
 
-  if ($fqdn == ''){
+  if ($::fqdn == ''){
     $fqdn = "${hostname}.nas.local"
   }
 
@@ -58,6 +58,13 @@ class nagios::target::windows {
     host_name           => $fqdn,
     check_comman        => 'check_nt!CLIENTVERSION',
     service_description => "check_nscpp_version_${hostname}",
+  }
+
+  @@nagios_service { "check_uptime_${hostname}":
+    use                 => "generic-service",
+    host_name           => $fqdn,
+    check_command       => 'check_nt!UPTIME',
+    service_description => "check_uptime_${hostname}",
   }
 
   @@nagios_service { "check_mem_usage_${hostname}":
