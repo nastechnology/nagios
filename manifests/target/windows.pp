@@ -11,12 +11,13 @@ class nagios::target::windows {
   }
 
   file { "C:/Program Files/NSClient++/NSC.ini":
-    ensure => file,
-    owner  => 'Administrator',
-    group  => 'Administrators',
-    mode   => 0777,
-    source => 'puppet:///modules/nagios/NSC.ini',
-    notify => Service['NSClientpp'],
+    ensure  => file,
+    owner   => 'Administrator',
+    group   => 'Administrators',
+    mode    => 0777,
+    source  => 'puppet:///modules/nagios/NSC.ini',
+    require => Package["NSClientPlusPlus.${architecture}"],
+    notify  => Service['NSClientpp'],
   }
 
   @@nagios_host { $fqdn:
