@@ -17,6 +17,7 @@ class nagios::monitor {
   Nagios_service <<||>> { notify => Service['nagios'] }
   Nagios_timeperiod <<||>> { notify => Service['nagios'] }
   Nagios_hostextinfo <<||>> { notify => Service['nagios'] }
+  Nagios_contact <<||>> { notify => Service['nagios'] }
 
   exec { 'SetNagiosPerms':
     command => '/usr/bin/sudo /bin/chmod -Rf 644 /etc/nagios/*',
@@ -56,6 +57,26 @@ class nagios::monitor {
     timeperiod_name  => 'weekends',
     saturday         => '00:00-24:00',
     sunday           => '00:00-24:00',
+  }
+
+  @@nagios_timeperiod { 'mark-oncall':
+    ensure           => present,
+    alias            => 'mark-oncall',
+    timeperiod_name  => 'mark-oncall',
+    use              => 'weekdays',
+    exclude          => 'holidays',
+  }
+
+  @@nagios_contact { 'mark':
+    ensure                        => present,
+    alias                         => 'mark',
+    host_notification_period      => 'mark-oncall',
+    service_notification_period   => 'mark-oncall',
+    service_notification_options  => 'w,u,c,r',
+    host_notification_options     => 'd,r',
+    service_notification_commands => 'notify-service-by-email',
+    host_notification_commands    => 'notify-host-by-email',
+    email                         => 'root@localhost',
   }
 
 }
