@@ -20,6 +20,10 @@ class nagios::target::windows {
     notify  => Service['NSClientpp'],
   }
 
+  if ($fqdn == ''){
+    $fqdn = "${hostname}.nas.local"
+  }
+
   @@nagios_host { $fqdn:
     ensure  => present,
     alias   => $::hostname,
