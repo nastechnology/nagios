@@ -31,6 +31,7 @@ class nagios::monitor {
     notification_options  => 'd,r',
     contact_groups        => 'admins',
     register              => '0',
+    notify                => Service['nagios'],
   }
 
   exec { 'SetNagiosObjectsPerms':
