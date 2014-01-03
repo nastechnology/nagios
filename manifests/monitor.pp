@@ -66,6 +66,7 @@ class nagios::monitor {
     timeperiod_name  => 'mark-oncall',
     use              => 'weekdays',
     exclude          => 'holidays',
+    alias            => 'mark-oncall',
   }
 
   @@nagios_contact { 'mark':
