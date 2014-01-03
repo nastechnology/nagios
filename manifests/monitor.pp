@@ -62,7 +62,7 @@ class nagios::monitor {
     ensure           => present,
     alias            => 'holidays',
     timeperiod_name  => 'holidays',
-    january1         => '00:00-24:00 ; New Years Day',
+    'january1'         => '00:00-24:00 ; New Years Day',
     #2008-03-23    00:00-24:00 ; Easter (2008)
     #2009-04-12    00:00-24:00 ; Easter (2009)
     #monday -1 may   00:00-24:00 ; Memorial Day (Last Monday in May)
