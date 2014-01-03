@@ -43,7 +43,7 @@ class nagios::monitor {
   @@nagios_timeperiod { 'weekdays':
     ensure           => present,
     timeperiod_name  => 'weekdays',
-    alias            => 'weekdays',
+    name             => 'weekdays',
     monday           => '00:00-24:00',
     tuesday          => '00:00-24:00',
     wednesday        => '00:00-24:00',
@@ -53,7 +53,7 @@ class nagios::monitor {
 
   @@nagios_timeperiod { 'weekends':
     ensure           => present,
-    alias            => 'weekends',
+    name             => 'weekends',
     timeperiod_name  => 'weekends',
     saturday         => '00:00-24:00',
     sunday           => '00:00-24:00',
@@ -61,7 +61,7 @@ class nagios::monitor {
 
   @@nagios_timeperiod { 'mark-oncall':
     ensure           => present,
-    alias            => 'mark-oncall',
+    name             => 'mark-oncall',
     timeperiod_name  => 'mark-oncall',
     use              => 'weekdays',
     exclude          => 'holidays',
