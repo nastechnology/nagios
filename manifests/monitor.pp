@@ -35,10 +35,10 @@ class nagios::monitor {
   }
 
   exec { 'SetNagiosObjectsPerms':
-    command => '/usr/bin/sudo /bin/chmod -Rf 644 /etc/nagios3/objects',
+    command => '/usr/bin/sudo /bin/chmod -Rf 744 /etc/nagios3/objects',
   }
 
   exec { 'SetNagiosPerms':
-    command => '/usr/bin/sudo /bin/chmod -Rf 644 /etc/nagios',
+    command => '/usr/bin/sudo /bin/chmod -Rf 744 /etc/nagios',
   }
 }
