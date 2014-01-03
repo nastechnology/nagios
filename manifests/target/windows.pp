@@ -49,7 +49,7 @@ class nagios::target::windows {
   @@nagios_service { "check_cpu_load_${hostname}":
     use                 => "generic-service",
     host_name           => $fqdn,
-    check_command       => 'check_nt!CPULOAD -l 5,80,90',
+    check_command       => 'check_nt!CPULOAD!-l 5,80,90',
     service_description => "check_cpu_load_${hostname}",
   }
  
