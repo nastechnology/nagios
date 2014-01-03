@@ -60,8 +60,8 @@ class nagios::monitor {
 
   @@nagios_timeperiod { 'holidays':
     ensure           => present,
-    alias            => 'holidays'
-    timeperiod_name  => 'holidays'
+    alias            => 'holidays',
+    timeperiod_name  => 'holidays',
     january 1        => '00:00-24:00 ; New Year's Day',
     #2008-03-23    00:00-24:00 ; Easter (2008)
     #2009-04-12    00:00-24:00 ; Easter (2009)
