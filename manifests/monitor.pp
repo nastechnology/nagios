@@ -58,7 +58,6 @@ class nagios::monitor {
     timeperiod_name  => 'weekends',
     saturday         => '00:00-24:00',
     sunday           => '00:00-24:00',
-    register         => '0',
   }
 
   @@nagios_timeperiod { 'mark-oncall':
