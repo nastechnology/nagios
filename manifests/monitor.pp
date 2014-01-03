@@ -36,6 +36,5 @@ class nagios::monitor {
     contact_groups        => 'admins',
     register              => '0',
     notify                => Service['nagios'],
-    after                 => Exec['SetNagiosPerms'],
   }
 }
