@@ -16,6 +16,7 @@ class nagios::monitor {
   Nagios_host    <<||>> { notify => Service['nagios'] }
   Nagios_service <<||>> { notify => Service['nagios'] }
   Nagios_hostextinfo <<||>> { notify => Service['nagios'] }
+  Nagios_timeperiod <<||>> { notify => Service['nagios'] }
 
   exec { 'SetNagiosPerms':
     command => '/usr/bin/sudo /bin/chmod -Rf 644 /etc/nagios/*',
@@ -46,6 +47,7 @@ class nagios::monitor {
     wednesday        => '00:00-24:00',
     thursday         => '00:00-24:00',
     friday           => '00:00-24:00',
+    require          => 
   }
 
   #@@nagios_timeperiod { 'weekends':
