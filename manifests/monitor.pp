@@ -39,7 +39,7 @@ class nagios::monitor {
   }
 
   @@nagios_timeperiod { 'weekdays':
-    ensure           => present,
+    ensure           => absent,
     timeperiod_name  => 'weekdays',
     monday           => '00:00-24:00',
     tuesday          => '00:00-24:00',
