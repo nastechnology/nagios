@@ -50,11 +50,27 @@ class nagios::monitor {
     friday           => '00:00-24:00',
   }
 
-  #@@nagios_timeperiod { 'weekends':
-  #  timeperiod_name  => 'weekends',
-  #  saturday         => '00:00-24:00',
-  #  sunday           => '00:00-24:00',
-  #  target           => '/etc/nagios/timeperiods.cfg',
-  #}
+  @@nagios_timeperiod { 'weekends':
+    ensure           => present,
+    alias            => 'weekends',
+    timeperiod_name  => 'weekends',
+    saturday         => '00:00-24:00',
+    sunday           => '00:00-24:00',
+  }
+
+  @@nagios_timeperiod { 'holidays':
+    ensure           => present,
+    alias            => 'holidays'
+    timeperiod_name  => 'holidays'
+    january 1        => '00:00-24:00 ; New Year's Day',
+    #2008-03-23    00:00-24:00 ; Easter (2008)
+    #2009-04-12    00:00-24:00 ; Easter (2009)
+    #monday -1 may   00:00-24:00 ; Memorial Day (Last Monday in May)
+    #july 4      00:00-24:00 ; Independence Day
+    #monday 1 september  00:00-24:00 ; Labor Day (1st Monday in September)
+    #thursday 4 november 00:00-24:00 ; Thanksgiving (4th Thursday in November)
+    #december 25   00:00-24:00 ; Christmas
+    #december 31   17:00-24:00 ; New Year's Eve (5pm onwards)
+  }
 
 }
