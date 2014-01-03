@@ -16,7 +16,7 @@ class nagios::monitor {
   Nagios_host    <<||>> { notify => Service['nagios'] }
   Nagios_service <<||>> { notify => Service['nagios'] }
   Nagios_hostextinfo <<||>> { notify => Service['nagios'] }
-  Nagios_timeperiod <<||>> { notify => Service['nagios'] }
+  Nagios_timeperiod <| |> { notify => Service['nagios'] }
 
   exec { 'SetNagiosPerms':
     command => '/usr/bin/sudo /bin/chmod -Rf 644 /etc/nagios/*',
