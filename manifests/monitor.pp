@@ -78,7 +78,7 @@ class nagios::monitor {
     host_notification_options     => 'd,r',
     service_notification_commands => 'notify-service-by-email',
     host_notification_commands    => 'notify-host-by-email',
-    email                         => 'root@localhost',
+    email                         => 'mark.myers@napoleonareaschools.org',
   }
 
 }
