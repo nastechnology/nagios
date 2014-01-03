@@ -52,7 +52,7 @@ class nagios::target::windows {
   @@nagios_service { "check_mem_usage_${hostname}":
     use                 => "generic-service",
     host_name           => $fqdn,
-    check_command       => 'check_nt!MEMUSE!-w 80 -c 90',
-    service_description => "check_total_procs_${hostname}",
+    check_command       => 'check_nscp!MEMUSE!-w 80 -c 90',
+    service_description => "check_mem_usage_${hostname}",
   }
 }
