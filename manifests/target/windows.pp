@@ -38,7 +38,14 @@ class nagios::target::windows {
      statusmap_image => "base/win40.gd2",
   }
 
-  @@nagios_service { "check_ping_${::hostname}":
+  @@nagios_service { "check_nscpp_version_${hostname}":
+    use                 => "generic-service",
+    host_name           => "$fqdn",
+    check_comman        => 'check_nt!CLIENTVERSION',
+    service_description => "check_nscpp_version_${hostname}",
+  }
+
+  @@nagios_service { "check_ping_${hostname}":
     check_command       => 'check_ping!100.0,20%!500.0,60%',
     use                 => 'generic-service',
     host_name           => $::fqdn,
